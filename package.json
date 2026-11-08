@@ -1,0 +1,16 @@
+{
+  "name": "1000seconds",
+  "version": "1.0.0",
+  "description": "1000 Seconds to AGI — a clicker/incremental game with a 1000-second time limit.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "npx --yes serve -l 8080 .",
+    "test": "node --test test/*.test.js",
+    "simulate": "node scripts/simulate.js"
+  },
+  "dependencies": {
+    "@vercel/og": "0.8.6",
+    "sharp": "^0.35.5"
+  }
+}

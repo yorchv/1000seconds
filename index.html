@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ecebe6">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>1000 Seconds to AGI</title>
+  <meta name="description" content="A 1000-second incremental game: from renting GPUs in a Taipei market to orbital superintelligence.">
+  <link rel="canonical" href="https://1000seconds.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="1000 Seconds to AGI">
+  <meta property="og:title" content="1000 Seconds to AGI">
+  <meta property="og:description" content="Rent GPUs in a Taipei market. Climb to orbital superintelligence. Pitch every 10 seconds or the investors walk. New run every day.">
+  <meta property="og:url" content="https://1000seconds.vercel.app/">
+  <meta property="og:image" content="https://1000seconds.vercel.app/api/og">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="1000 Seconds to AGI: a comic tech-mogul incremental game">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="1000 Seconds to AGI">
+  <meta name="twitter:description" content="Rent GPUs in a Taipei market. Climb to orbital superintelligence. Pitch every 10 seconds or the investors walk.">
+  <meta name="twitter:image" content="https://1000seconds.vercel.app/api/og">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23ecebe6'/><circle cx='50' cy='50' r='30' fill='%23f0601a'/></svg>">
+  <link rel="stylesheet" href="src/style.css?v=8">
+</head>
+<body>
+  <div class="vignette" id="vignette" aria-hidden="true"></div>
+  <div class="watermark" id="watermark" aria-hidden="true"></div>
+
+  <header class="top" id="top">
+    <div class="top-row">
+      <div class="mark" aria-label="1000 Seconds to AGI">
+        <span class="mark-num">1000</span>
+        <span class="mark-txt">Seconds<br>to AGI</span>
+      </div>
+      <div class="clock">
+        <span class="clock-val" id="clock">1000.0</span><span class="clock-unit">s</span>
+      </div>
+      <button class="icon-btn" id="sound" type="button" aria-label="Sound off" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="snd-on" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><path class="snd-off" d="M16.5 9.5l5 5m0-5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="timebar"><div class="timebar-fill" id="timebar"></div><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="left:90%"></i></div>
+    <div class="chips" id="chips"></div>
+  </header>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <main class="main" id="main" data-view="shop">
+    <section class="sec sec-career" aria-labelledby="h-career">
+      <h2 class="sec-h" id="h-career"><span class="idx">01</span>Career</h2>
+      <div class="persona" id="persona"></div>
+      <div class="reqs" id="reqs"></div>
+      <button class="train" id="train" type="button" disabled>
+        <span class="train-main" id="train-main">Start training run</span>
+        <span class="train-sub" id="train-sub"></span>
+      </button>
+      <div class="trainbar" id="trainbar" hidden>
+        <div class="trainbar-row"><span id="train-label">Training</span><span id="train-pct">0%</span></div>
+        <div class="bar"><div class="bar-fill" id="train-fill"></div></div>
+      </div>
+      <div class="thermal locked" id="thermal">
+        <div class="thermal-row"><span class="lbl">Heat</span><span id="heat-text">Locked · Level 5</span></div>
+        <div class="thermal-ctl">
+          <div class="heatbar"><div class="heatbar-fill" id="heat-fill"></div><i class="heat-sweet"></i></div>
+          <div class="dial" id="dial" role="radiogroup" aria-label="Cooling dial"></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs" aria-label="Panels">
+      <button type="button" data-tab="shop" class="on">Shop</button><button type="button" data-tab="facility">Plant</button><button type="button" data-tab="road">Ladder</button><button type="button" data-tab="log">Log</button>
+    </nav>
+
+    <div class="panes">
+      <section class="sec sec-shop pane" data-pane="shop" aria-labelledby="h-shop">
+        <h2 class="sec-h" id="h-shop"><span class="idx">03</span>Shop</h2>
+        <div class="shop-bar">
+          <span class="infl" id="infl"></span>
+          <span class="qty" id="qty" role="group" aria-label="Buy quantity">
+            <button type="button" data-qty="1" class="on">×1</button><button type="button" data-qty="10">×10</button><button type="button" data-qty="max">Max</button>
+          </span>
+        </div>
+        <div class="shop" id="shop"></div>
+      </section>
+
+      <section class="sec sec-facility pane" data-pane="facility" aria-labelledby="h-facility">
+        <h2 class="sec-h" id="h-facility"><span class="idx">02</span>Facility</h2>
+        <div class="facility">
+          <div class="grille" id="grille" aria-hidden="true"></div>
+          <div class="fac-stats" id="fac-stats"></div>
+        </div>
+        <div class="sites" id="sites"></div>
+      </section>
+
+      <section class="sec sec-road pane" data-pane="road" aria-labelledby="h-road">
+        <h2 class="sec-h" id="h-road"><span class="idx">04</span>Ladder</h2>
+        <ol class="road" id="road"></ol>
+      </section>
+
+      <section class="sec sec-log pane" data-pane="log" aria-labelledby="h-log">
+        <h2 class="sec-h" id="h-log"><span class="idx">05</span>Log</h2>
+        <ul class="log" id="log"></ul>
+        <p class="keys">Keys: Space pitch · 1–9 buy · T train · C cooling · M sound</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="thumb" id="thumb">
+    <div class="thumb-in">
+      <div class="gauges">
+        <div class="gauge" id="g-charge">
+          <div class="gauge-row"><span class="lbl">Charge</span><span class="gauge-val" id="charge-val">+$0</span></div>
+          <div class="bar"><div class="bar-fill" id="charge-fill"></div></div>
+        </div>
+        <div class="gauge" id="g-oc">
+          <div class="gauge-row"><span class="lbl">Overclock</span><span class="gauge-val" id="oc-val">×1.00</span></div>
+          <div class="bar"><div class="bar-fill" id="oc-fill"></div></div>
+        </div>
+        <div class="attn" id="attn">Attention <b id="attn-val">10.0</b>s</div>
+      </div>
+      <div class="pitch-wrap">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-track" cx="60" cy="60" r="54"/>
+          <circle class="ring-fill" id="ring" cx="60" cy="60" r="54" pathLength="100"/>
+        </svg>
+        <button class="pitch" id="pitch" type="button">
+          <span class="pitch-t">Pitch</span>
+          <span class="pitch-v" id="pitch-v">+$1</span>
+        </button>
+        <div class="floaters" id="floaters" aria-hidden="true"></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="ceremony" id="ceremony" aria-live="polite"></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+
+  <script src="src/game.js?v=8"></script>
+  <script src="src/sound.js?v=8"></script>
+  <script src="src/ui.js?v=8"></script>
+</body>
+</html>
